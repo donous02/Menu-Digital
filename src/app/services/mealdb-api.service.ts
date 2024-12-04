@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class MealdbApiService {
 
-  urlnamePetition = 'https://themealdb.com/api/json/v1/1/search.php?s=chicken'; 
+  urlnamePetition = 'https://themealdb.com/api/json/v1/1/search.php?s=cookie'; 
   urlletterPetition = 'https://themealdb.com/api/json/v1/1/search.php?f=a';
   urlrandomPetition = 'https://themealdb.com/api/json/v1/1/random.php';
 
