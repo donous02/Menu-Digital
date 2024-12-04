@@ -1,0 +1,8 @@
+.container{
+    background-color: hsl(37, 21%, 84%);
+width: 80%;
+height: 90%;
+margin-left: 10%;
+color: hsl(0, 0%, 20%);
+border: 20px dashed hsl(0, 51%, 36%);
+}

@@ -1,0 +1,19 @@
+<div class="container">
+
+    @if (btnfiltroLetra) {
+        <app-filtro-aleatorio></app-filtro-aleatorio>
+    }@else if (btnfiltroNombre) {
+        <app-filtropor-nombre></app-filtropor-nombre>
+    }@else if (btnfiltroAleatorio) {
+        <app-filtro-aleatorio></app-filtro-aleatorio>
+    }
+    @else {
+    <button (click)="btnfiltroLetra=true">Menu por Letra</button>
+
+    <button (click)="btnfiltroNombre=true">Menu por Nombre</button>
+
+    <button (click)="btnfiltroAleatorio=true" class="surpriseBtn">Comida sorpresa!!</button>
+    }
+
+</div>
+
