@@ -1,7 +1,9 @@
 <div class="container">
     <label for="meal">Comida:</label><br>
-    <input #meal id="meal" type="text" placeholder="Escriba algo para preparar">
-    <button id="sendBtn">Enviar</button><br>
+    <input #searchInput id="meal" type="text" placeholder="Escriba algo para preparar">
+    <button (click)="getMeals()" id="sendBtn">Enviar</button><br>
+    <p>Resultados de busqueda: {{getNameMeal.length}}</p>
+
     <div  class="contenido">
         <button (click)="decreaseCounter()" id="leftMeal" class="switchMeal"><</button>
         <div #imgContent class="imgContent">

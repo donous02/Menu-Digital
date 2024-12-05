@@ -6,13 +6,22 @@ import { Injectable } from '@angular/core';
 })
 export class MealdbApiService {
 
-  urlnamePetition = 'https://themealdb.com/api/json/v1/1/search.php?s=cookie'; 
-  urlletterPetition = 'https://themealdb.com/api/json/v1/1/search.php?f=a';
+  urlnamePetition = 'https://themealdb.com/api/json/v1/1/search.php?s='; 
+  urlletterPetition = 'https://themealdb.com/api/json/v1/1/search.php?f=';
   urlrandomPetition = 'https://themealdb.com/api/json/v1/1/random.php';
 
   constructor(private http: HttpClient) { }
 
-  getnamePetition(){ 
-    return this.http.get(this.urlnamePetition);
+  getnamePetition(query:string){ 
+    const url = `${this.urlnamePetition}${query}`; // Construcción dinámica de la URL
+    return this.http.get(url);
+  }
+  getletterPetition(query:string){ 
+    const url = `${this.urlletterPetition}${query}`; // Construcción dinámica de la URL
+    return this.http.get(url);
+  }
+
+  getrandomPetition(){ 
+    return this.http.get(this.urlrandomPetition);
   }
 }

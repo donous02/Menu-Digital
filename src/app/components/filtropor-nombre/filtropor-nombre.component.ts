@@ -10,8 +10,7 @@ import { count } from 'rxjs';
   templateUrl: './filtropor-nombre.component.html',
   styleUrl: './filtropor-nombre.component.css'
 })
-export class FiltroporNombreComponent implements OnInit {
-    constructor(private service:MealdbApiService){}
+export class FiltroporNombreComponent {
 
 
     getNameMeal:any=[];
@@ -23,28 +22,25 @@ export class FiltroporNombreComponent implements OnInit {
     @ViewChild('infoMeal') infoMeal!:ElementRef;
     @ViewChild('imgContent') imgContent!:ElementRef;
 
+
+    ///////ANIMACIONES 
     animationTask(){
       this.infoMeal.nativeElement.classList.add('applyAnimation')
       setTimeout(()=>{
       this.infoMeal.nativeElement.classList.remove('applyAnimation')
-      },1200)
+      },1500)
 
       this.imgContent.nativeElement.classList.add('applyAnimation2')
       setTimeout(()=>{
       this.imgContent.nativeElement.classList.remove('applyAnimation2')
-      },2200)
+      },2500)
     }
 
-  counter=0;
 
-    filtro(){
 
-    }
-
-    ngOnInit() {
-      this.getMeals();
-    }
-
+///////////////////////////////SCROLLS
+    // Scroll hacia la derecha
+    counter=0;
     increaseCounter(){
       this.counter++;
       if (this.counter>this.getImg.length-1) {
@@ -53,6 +49,8 @@ export class FiltroporNombreComponent implements OnInit {
       this.animationTask();
     }
 
+
+    // Scroll hacia la izquierda
     decreaseCounter(){
 
       if (this.counter<=0) {
@@ -63,22 +61,38 @@ export class FiltroporNombreComponent implements OnInit {
 
       }
     }
+  ///////////////////////////Fin de Scrolls
+
+  constructor(private service:MealdbApiService){}
+
+    @ViewChild('searchInput') searchInput!:ElementRef<HTMLInputElement>
 
     async getMeals() {
-      this.service.getnamePetition().subscribe((data) =>{
-        for (let i = 0; i < Object.values(data)[0].length; i++) {
-          this.getNameMeal.push(Object.values(data)[0][i].strMeal);
-          this.getImg.push(Object.values(data)[0][i].strMealThumb);
-          this.getMealArea.push(Object.values(data)[0][i].strArea);
-          this.getMealPrep.push(Object.values(data)[0][i].strInstructions);
-          this.getCategory.push(Object.values(data)[0][i].strCategory);
-        
-        
-        }
-        
-       console.log(this.getNameMeal);
-    
-      })
+      this.getNameMeal=[]
+      this.getImg=[];
+      this.getMealArea=[]
+      this.getMealPrep=[]
+      this.getCategory=[]
+
+      const searchMeal = this.searchInput.nativeElement.value.trim();
+
+
+
+      if(searchMeal){ 
+        this.service.getnamePetition(searchMeal).subscribe((data) =>{
+          for (let i = 0; i < Object.values(data)[0].length; i++) {
+            this.getNameMeal.push(Object.values(data)[0][i].strMeal);
+            this.getImg.push(Object.values(data)[0][i].strMealThumb);
+            this.getMealArea.push(Object.values(data)[0][i].strArea);
+            this.getMealPrep.push(Object.values(data)[0][i].strInstructions);
+            this.getCategory.push(Object.values(data)[0][i].strCategory);
+          }
+          
+  
+         console.log(this.getNameMeal);
+        })
+      }
+      
     }
 
 

@@ -1,1 +1,52 @@
-<p>filtro-por-letra works!</p>
+<div class="container">
+    <label for="meal">Comida:</label><br>
+    <input maxlength="1" #searchInput id="meal" type="text" placeholder="Escriba algo para preparar">
+    <button (click)="getMeals()" id="sendBtn">Enviar</button><br>
+    <p>Resultados de busqueda: {{getNameMeal.length}}</p>
+
+    <div  class="contenido">
+        <button (click)="decreaseCounter()" id="leftMeal" class="switchMeal"><</button>
+        <div #imgContent class="imgContent">
+            <h3>{{getNameMeal[counter]}}</h3>
+            <img  src="{{getImg[counter]}}" alt="">
+        </div>
+        <div #infoMeal class="infoMeal">
+              <p>{{getMealArea[counter]}}</p>
+              <button id="instructionBtn">Ver instrucciones</button>
+              <p>{{getCategory[counter]}}</p>
+              @switch (getCategory[counter]) {
+                @case ('Chicken') {
+                    <img class="iconMeal" src="./assets/chicken-leg.png" alt="Chicken Png">
+                }
+                @case ('Beef') {
+                    <img class="iconMeal" src="./assets/beef-steak.png" alt="Beef Png">
+                }
+                @case ('Seafood') {
+                    <img class="iconMeal" src="./assets/seafood.png" alt="Seafood Png">
+                } @case ('Vegan') {
+                    <img class="iconMeal" src="./assets/vegetarian.png" alt="Vegan Png">
+                }
+                @case ('Dessert') {
+                    <img class="iconMeal" src="./assets/sweets.png" alt="Dessert Png">
+                }
+                @case ('Vegetarian') {
+                    <img class="iconMeal" src="./assets/salad.png" alt="Salad Png">
+                }
+                @case ('Breakfast') {
+                    <img class="iconMeal" src="./assets/breakfast.png" alt="Breakfast Png">
+                }
+                @case ('Lamb') {
+                    <img class="iconMeal" src="./assets/lamb.png" alt="Breakfast Png">
+
+                }
+                @case ('Pasta') {
+                    <img class="iconMeal" src="./assets/pasta.png" alt="Breakfast Png">
+
+                }
+              }
+
+        </div>
+        <button (click)="increaseCounter()" id="rightMeal" class="switchMeal">></button>
+        
+    </div>  
+</div>
