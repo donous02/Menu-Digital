@@ -2,12 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: hsl(37, 21%, 84%);
+    background-color: #4A291A;
 width: 80%;
 height: 90%;
 margin-left: 10%;
-color: hsl(0, 0%, 20%);
-border: 20px dashed hsl(0, 51%, 36%);
+color: white(0, 0%, 20%);
+border: 20px dashed #FEE592;
+font-weight: bold;
 }
 
 input{
@@ -40,12 +41,17 @@ input{
 .switchMeal{
     width: 50px;
     height: 100%;
-    background-color: hsl(37, 21%, 84%);
+    background-color: hsl(19, 48%, 20%);
     border: none;
 }
 .switchMeal:hover{
-    background-color: hsl(37, 21%, 94%);
+    background-color: hsl(19, 48%, 30%);;
+    
     cursor: pointer;
+}
+.switchMeal:active{
+    background-color: hsl(19, 48%, 40%);;
+    
 }
 
 img{

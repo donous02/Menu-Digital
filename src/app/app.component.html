@@ -1,19 +1,32 @@
-<div class="container">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Digital</title>
+</head>
+<body>
+    
+    <div class="container">
 
-    @if (btnfiltroLetra) {
-        <app-filtro-por-letra></app-filtro-por-letra>
-    }@else if (btnfiltroNombre) {
-        <app-filtropor-nombre></app-filtropor-nombre>
-    }@else if (btnfiltroAleatorio) {
-        <app-filtro-aleatorio></app-filtro-aleatorio>
-    }
-    @else {
-    <button (click)="btnfiltroLetra=true">Menu por Letra</button>
+        @if (btnfiltroLetra) {
+            <app-filtro-por-letra class="btnDesign"></app-filtro-por-letra>
+        }@else if (btnfiltroNombre) {
+            <app-filtropor-nombre class="btnDesign"></app-filtropor-nombre>
+        }@else if (btnfiltroAleatorio) {
+            <app-filtro-aleatorio class="btnDesign"></app-filtro-aleatorio>
+        }
+        @else {
+        <button (click)="btnfiltroLetra=true">Menu por Letra</button>
+    
+        <button (click)="btnfiltroNombre=true">Menu por Nombre</button>
+    
+        <button (click)="btnfiltroAleatorio=true" class="surpriseBtn">Comida sorpresa!!</button>
+        }
+    
+    </div>
+</body>
+    
+</html>
 
-    <button (click)="btnfiltroNombre=true">Menu por Nombre</button>
-
-    <button (click)="btnfiltroAleatorio=true" class="surpriseBtn">Comida sorpresa!!</button>
-    }
-
-</div>
 

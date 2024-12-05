@@ -1,20 +1,19 @@
 <div class="container">
-    <label for="meal">Comida:</label><br>
-    <input #searchInput id="meal" type="text" placeholder="Escriba algo para preparar">
-    <button (click)="getMeals()" id="sendBtn">Enviar</button><br>
-    <p>Resultados de busqueda: {{getNameMeal.length}}</p>
+    <button style="font-weight: bold;" (click)="getMeals()" id="sendBtn">Generar</button><br>
 
     <div  class="contenido">
         <button (click)="decreaseCounter()" id="leftMeal" class="switchMeal"><</button>
         <div #imgContent class="imgContent">
-            <h3>{{getNameMeal[counter]}}</h3>
-            <img  src="{{getImg[counter]}}" alt="">
+            <h3>{{getNameMeal}}</h3>
+            <img  src="{{getImg}}" alt="">
         </div>
         <div #infoMeal class="infoMeal">
-              <p>{{getMealArea[counter]}}</p>
-              <button id="instructionBtn">Ver instrucciones</button>
-              <p>{{getCategory[counter]}}</p>
-              @switch (getCategory[counter]) {
+              <p>{{getMealArea}}</p>
+              @if (getNameMeal.length) {
+                <button id="instructionBtn">Ver instrucciones</button>
+                }
+              <p>{{getCategory}}</p>
+              @switch (getCategory) {
                 @case ('Chicken') {
                     <img class="iconMeal" src="./assets/chicken-leg.png" alt="Chicken Png">
                 }
@@ -34,6 +33,22 @@
                 }
                 @case ('Breakfast') {
                     <img class="iconMeal" src="./assets/breakfast.png" alt="Breakfast Png">
+                }
+                @case ('Lamb') {
+                    <img class="iconMeal" src="./assets/lamb.png" alt="Lamb Png">
+
+                }
+                @case ('Pasta') {
+                    <img class="iconMeal" src="./assets/pasta.png" alt="Pasta Png">
+
+                }
+                @case ('Side') {
+                    <img class="iconMeal" src="./assets/food.png" alt="Side Png">
+
+                }
+                @case ('Pork') {
+                    <img class="iconMeal" src="./assets/pork.png" alt="Pork Png">
+
                 }
               }
 

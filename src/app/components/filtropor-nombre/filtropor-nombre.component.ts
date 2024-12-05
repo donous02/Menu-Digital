@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MealdbApiService } from '../../services/mealdb-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { count } from 'rxjs';
@@ -64,6 +64,13 @@ export class FiltroporNombreComponent {
   ///////////////////////////Fin de Scrolls
 
   constructor(private service:MealdbApiService){}
+
+  @HostListener('document:keydown', ['$event'])
+handleKeyDown(event: KeyboardEvent): void {
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    window.location.reload()
+  }}
 
     @ViewChild('searchInput') searchInput!:ElementRef<HTMLInputElement>
 

@@ -1,5 +1,6 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { MealdbApiService } from '../../services/mealdb-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-filtro-por-letra',
@@ -9,6 +10,7 @@ import { MealdbApiService } from '../../services/mealdb-api.service';
   styleUrl: './filtro-por-letra.component.css'
 })
 export class FiltroPorLetraComponent {
+
 
 
   getNameMeal:any=[];
@@ -62,6 +64,14 @@ export class FiltroPorLetraComponent {
 ///////////////////////////Fin de Scrolls
 
 constructor(private service:MealdbApiService){}
+
+
+@HostListener('document:keydown', ['$event'])
+handleKeyDown(event: KeyboardEvent): void {
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    window.location.reload()
+  }}
 
   @ViewChild('searchInput') searchInput!:ElementRef<HTMLInputElement>
 

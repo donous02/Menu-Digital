@@ -12,7 +12,10 @@
         </div>
         <div #infoMeal class="infoMeal">
               <p>{{getMealArea[counter]}}</p>
+              @if (getNameMeal.length) {
               <button id="instructionBtn">Ver instrucciones</button>
+
+              }
               <p>{{getCategory[counter]}}</p>
               @switch (getCategory[counter]) {
                 @case ('Chicken') {
@@ -41,6 +44,14 @@
                 }
                 @case ('Pasta') {
                     <img class="iconMeal" src="./assets/pasta.png" alt="Breakfast Png">
+
+                }
+                @case ('Side') {
+                    <img class="iconMeal" src="./assets/food.png" alt="Side Png">
+
+                }
+                @case ('Pork') {
+                    <img class="iconMeal" src="./assets/pork.png" alt="Pork Png">
 
                 }
               }

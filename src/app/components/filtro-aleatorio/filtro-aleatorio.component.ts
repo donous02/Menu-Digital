@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MealdbApiService } from '../../services/mealdb-api.service';
 
 @Component({
@@ -17,11 +17,11 @@ export class FiltroAleatorioComponent implements OnInit {
   
 
 
-  getNameMeal:any=[];
-  getImg:any=[];
-  getMealArea:any=[];
-  getMealPrep:any=[];
-  getCategory:any=[];
+  getNameMeal!:any;
+  getImg!:any;
+  getMealArea!:any;
+  getMealPrep!:any;
+  getCategory!:any;
 
   @ViewChild('infoMeal') infoMeal!:ElementRef;
   @ViewChild('imgContent') imgContent!:ElementRef;
@@ -69,21 +69,30 @@ export class FiltroAleatorioComponent implements OnInit {
 
 constructor(private service:MealdbApiService){}
 
-  @ViewChild('searchInput') searchInput!:ElementRef<HTMLInputElement>
+@HostListener('document:keydown', ['$event'])
+handleKeyDown(event: KeyboardEvent): void {
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    window.location.reload()
+  }}
 
   async getMeals() {
-    this.getNameMeal=[]
-    this.getImg=[];
-    this.getMealArea=[]
-    this.getMealPrep=[]
-    this.getCategory=[]
+    this.getNameMeal=''
+    this.getImg=''
+    this.getMealArea=''
+    this.getMealPrep=''
+    this.getCategory=''
 
-    const searchMeal = this.searchInput.nativeElement.value.trim();
 
 
 
       this.service.getrandomPetition().subscribe((data) =>{
-       console.log(data);
+        this.getNameMeal=Object.values(data)[0][0].strMeal;
+        this.getImg=Object.values(data)[0][0].strMealThumb;
+        this.getMealArea=Object.values(data)[0][0].strArea;
+        this.getMealPrep=Object.values(data)[0][0].strInstructions;
+        this.getCategory=Object.values(data)[0][0].strCategory;
+       console.log(Object.values(data)[0][0].strMeal);
       })
     
   }
